@@ -2,6 +2,8 @@ import { config } from 'dotenv'
 config()
 import express, { Request, Response } from 'express'
 import cors from 'cors'
+import fs from 'fs'
+
 
 const PORT = 5001
 const app = express()
