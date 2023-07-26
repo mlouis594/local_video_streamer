@@ -1,23 +1,26 @@
 import "./App.css";
-import Card from "./components/Card";
+import {
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import Player from "./components/Player";
-import VideoGrid from "./components/VideoGrid";
+import Home from "./components/Home";
 
 function App() {
-  const temp = [
-    { title: "one", duration: 1 },
-    { title: "two", duration: 2 },
-    { title: "three", duration: 3 },
-    { title: "four", duration: 4 },
-    { title: "five", duration: 5 },
-  ];
+  //will write a query to API for list of avail movies
 
-  return (
-    <>
-      <h1>Available Videos</h1>
-      <VideoGrid videoInfo={temp} />
-    </>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/">
+        <Route index element={<Home />} />
+        <Route path="videos/:title" element={<Player />} />
+      </Route>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
